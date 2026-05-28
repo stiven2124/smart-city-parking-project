@@ -26,63 +26,13 @@
                                           (Retrofit)
                                                │
                                         [ mobile-app (Android) ]
-# Smart City IoT Parking System
-
-Μια ολοκληρωμένη full-stack End-to-End IoT λύση για τη διαχείριση έξυπνης στάθμευσης σε πραγματικό χρόνο (Smart City). Το σύστημα χρησιμοποιεί έτοιμο serverless cloud backend στο Microsoft Azure, επιτρέποντας την άμεση δοκιμή της native Android εφαρμογής και την αποστολή δεδομένων τηλεμετρίας μέσω Azure CLI.
-
----
-
-## 🏗️ Αρχιτεκτονική Συστήματος & Ροή Δεδομένων
-
-Το σύστημα βασίζεται σε event-driven αρχιτεκτονική και υλοποιείται με την παρακάτω ροή:
-
-```text
-[ IoT Sensors ] ──(Azure CLI / MQTT)──> [ Azure IoT Hub ]
-                                               │
-                                         (Event Grid)
-                                               ▼
-                                   [ backend-sensors (Azure) ]
-                                               │
-                                         (Cosmos DB SDK)
-                                               ▼
-                                    [ Azure Cosmos DB (Live) ]
-                                               ▲
-                                         (Cosmos DB SDK)
-                                               │
-                                    [ backend-auth (Azure) ]
-                                               ▲
-                                          (Retrofit)
-                                               │
-                                        [ mobile-app (Android) ]
-# Smart City IoT Parking System
-
-Μια ολοκληρωμένη full-stack End-to-End IoT λύση για τη διαχείριση έξυπνης στάθμευσης σε πραγματικό χρόνο (Smart City). Το σύστημα χρησιμοποιεί έτοιμο serverless cloud backend στο Microsoft Azure, επιτρέποντας την άμεση δοκιμή της native Android εφαρμογής και την αποστολή δεδομένων τηλεμετρίας μέσω Azure CLI.
-
----
-
-## 🏗️ Αρχιτεκτονική Συστήματος & Ροή Δεδομένων
-
-Το σύστημα βασίζεται σε event-driven αρχιτεκτονική και υλοποιείται με την παρακάτω ροή:
-
-```text
-[ IoT Sensors ] ──(Azure CLI / MQTT)──> [ Azure IoT Hub ]
-                                               │
-                                         (Event Grid)
-                                               ▼
-                                   [ backend-sensors (Azure) ]
-                                               │
-                                         (Cosmos DB SDK)
-                                               ▼
-                                    [ Azure Cosmos DB (Live) ]
-                                               ▲
-                                         (Cosmos DB SDK)
-                                               │
-                                    [ backend-auth (Azure) ]
-                                               ▲
-                                          (Retrofit)
-                                               │
-                                        [ mobile-app (Android) ]
 ```
+# Smart City IoT Parking System
+
+Μια ολοκληρωμένη full-stack End-to-End IoT λύση για τη διαχείριση έξυπνης στάθμευσης σε πραγματικό χρόνο (Smart City). Το σύστημα χρησιμοποιεί έτοιμο serverless cloud backend στο Microsoft Azure, επιτρέποντας την άμεση δοκιμή της native Android εφαρμογής και την αποστολή δεδομένων τηλεμετρίας μέσω Azure CLI.
+
+---
+
 IoT Telemetry: Προσομοιωμένοι αισθητήρες στέλνουν την κατάσταση των θέσεων (Free/Occupied) απευθείας στο Azure IoT Hub χρησιμοποιώντας εντολές CLI.
 
 Azure Cloud Backend: Το backend τρέχει ήδη live στο Azure (Azure Functions & Cosmos DB), επεξεργάζεται τα δεδομένα των αισθητήρων και διαχειρίζεται το User Authentication.
