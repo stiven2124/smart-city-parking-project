@@ -9,23 +9,34 @@
 Το σύστημα βασίζεται σε event-driven αρχιτεκτονική και υλοποιείται με την παρακάτω ροή:
 
 ```
-[ IoT Sensors ] ──(Azure CLI )──> [ Azure IoT Hub ]
-                                               │
-                                         (Event Grid)
-                                               ▼
-                                   [ backend-sensors (Azure) ]
-                                               │
-                                         (Cosmos DB SDK)
-                                               ▼
-                                    [ Azure Cosmos DB (Live) ]
-                                               ▲
-                                         (Cosmos DB SDK)
-                                               │
-                                    [ backend-auth (Azure) ]
-                                               ▲
-                                          (Retrofit)
-                                               │
-                                        [ mobile-app (Android) ]
+``text
+       +-----------------------+
+       |   IoT Device/Sensor   | (Simulated via Azure CLI / D2C)
+       +-----------+-----------+
+                   | (MQTT / AMQP)
+                   v
+       +-----------+-----------+
+       |    Azure IoT Hub      |
+       +-----------+-----------+
+                   |
+                   v
+       +-----------+-----------+
+       | Azure Function (Py)   | (Event-driven Serverless Processing)
+       +-----+-----------+-----+
+             |           |
+             |           +------------------------------------+
+             v (NoSQL Telemetry)                              v (Relational User Data)
++------------+------------+                      +------------+------------+
+|   Azure Cosmos DB       |                      |     Azure SQL DB         |
+|  (ParkingSlots/Status)  |                      |  (User Auth & Profiles)  |
++------------+------------+                      +------------+------------+
+             |                                                |
+             +-----------------------+------------------------+
+                                     | (REST API Endpoints)
+                                     v
+                        +------------+------------+
+                        |     Android App         | (Retrofit, Java, Google Maps)
+                        +-------------------------+
 ```
 # Smart City IoT Parking System
 
